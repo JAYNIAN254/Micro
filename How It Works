@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works | JayVian - Phone Protection in Kenya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --secondary: #10b981;
+            --accent: #f97316;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --card-bg: #ffffff;
+            --dark-card-bg: #1f2937;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f0f4f8;
+            color: #334155;
+            overflow-x: hidden;
+            transition: background 0.5s ease;
+            line-height: 1.6;
+        }
+
+        body.dark-mode {
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode header {
+            background-color: rgba(15, 23, 42, 0.92);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            font-size: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+            font-size: 17px;
+        }
+
+        .dark-mode .nav-links a {
+            color: #e2e8f0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            outline: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(79, 70, 229, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark-mode .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            margin-bottom: 25px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--gray);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .dark-mode .hero p {
+            color: #cbd5e1;
+        }
+
+        /* Quick Navigation Summary */
+        .quick-nav {
+            padding: 60px 0;
+            background: rgba(79, 70, 229, 0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .dark-mode .quick-nav {
+            background: rgba(15, 23, 42, 0.1);
+            border-color: rgba(255,255,255,0.05);
+        }
+
+        .summary-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            flex: 1;
+            min-width: 300px;
+            max-width: 380px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark-mode .summary-card {
+            background: var(--dark-card-bg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .summary-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(79, 70, 229, 0.15);
+        }
+
+        .summary-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .summary-header i {
+            font-size: 28px;
+            color: var(--primary);
+        }
+
+        .summary-header h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        .dark-mode .summary-header h3 {
+            color: #e2e8f0;
+        }
+
+        .summary-points {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .summary-points li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .summary-points i {
+            color: var(--secondary);
+            margin-top: 4px;
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 12px 24px;
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+        }
+
+        .nav-link:hover {
+            gap: 12px;
+            background: rgba(79, 70, 229, 0.1);
+        }
+
+        /* Process Section */
+        .process {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 70px;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--dark);
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dark-mode .section-title {
+            color: #f1f5f9;
+        }
+
+        .section-subtitle {
+            font-size: 1.35rem;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            max-width: 350px;
+            text-align: center;
+            position: relative;
+            transition: all 0.4s ease;
+            z-index: 1;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .dark-mode .step-card {
+            background: var(--dark-card-bg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .step-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 50px rgba(79, 70, 229, 0.15);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(79, 70, 229, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 36px;
+            color: var(--primary);
+        }
+
+        .step-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .dark-mode .step-title {
+            color: #e2e8f0;
+        }
+
+        .step-description {
+            color: var(--gray);
+            line-height: 1.7;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .dark-mode .step-description {
+            color: #cbd5e1;
+        }
+
+        /* Coverage Visualization */
+        .coverage-info {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            max-width: 1000px;
+            margin: 60px auto;
+            text-align: center;
+        }
+
+        .dark-mode .coverage-info {
+            background: var(--dark-card-bg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .coverage-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .coverage-header i {
+            font-size: 36px;
+            color: var(--primary);
+        }
+
+        .coverage-header h3 {
+            font-size: 2.2rem;
+            color: var(--dark);
+        }
+
+        .dark-mode .coverage-header h3 {
+            color: #e2e8f0;
+        }
+
+        .coverage-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .coverage-item {
+            background: rgba(79, 70, 229, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            min-width: 280px;
+            flex: 1;
+        }
+
+        .coverage-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 15px 0;
+        }
+
+        .coverage-label {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .dark-mode .coverage-label {
+            color: #cbd5e1;
+        }
+
+        /* Claim Process */
+        .claim-process {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+
+        .dark-mode .claim-process {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: var(--primary);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 70px;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 70px;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 2;
+        }
+
+        .dark-mode .timeline-content {
+            background: var(--dark-card-bg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            z-index: 3;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -10px;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+            transform: translateY(-50%);
+        }
+
+        .timeline-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 4;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-icon {
+            right: -25px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-icon {
+            left: -25px;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .timeline-description {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Referral Program */
+        .referral-visual {
+            display: flex;
+            justify-content: center;
+            margin: 60px auto;
+            max-width: 1000px;
+            position: relative;
+        }
+
+        .referral-level {
+            text-align: center;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin: 0 15px;
+            min-width: 200px;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .referral-level {
+            background: var(--dark-card-bg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .referral-level:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(79, 70, 229, 0.15);
+        }
+
+        .referral-level h4 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .referral-percentage {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .referral-description {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .dark-mode .referral-description {
+            color: #cbd5e1;
+        }
+
+        .referral-connector {
+            position: absolute;
+            top: 50%;
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            z-index: 1;
+        }
+
+        .connector-1 {
+            left: 33.33%;
+            transform: translateX(-50%);
+        }
+
+        .connector-2 {
+            left: 66.66%;
+            transform: translateX(-50%);
+        }
+
+        .referral-info {
+            background: rgba(79, 70, 229, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 40px;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .dark-mode .referral-info {
+            background: rgba(15, 23, 42, 0.2);
+        }
+
+        .referral-info ul {
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+
+        .referral-info li {
+            margin-bottom: 12px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .faq-item {
+            background: var(--dark-card-bg);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .faq-question {
+            color: #e2e8f0;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .dark-mode .faq-answer {
+            color: #cbd5e1;
+        }
+
+        .faq-item.active .faq-question {
+            background: rgba(79, 70, 229, 0.05);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 30px 25px;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+        }
+
+        .cta p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-links i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+                left: 0 !important;
+            }
+            
+            .timeline-item:nth-child(even) {
+                padding-left: 70px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -10px;
+                right: auto;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-icon,
+            .timeline-item:nth-child(even) .timeline-icon {
+                left: -25px;
+                right: auto;
+            }
+            
+            .referral-visual {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            .referral-connector {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .step-card {
+                max-width: 100%;
+            }
+            
+            .cta h2 {
+                font-size: 2.2rem;
+            }
+            
+            .summary-card {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .coverage-details {
+                flex-direction: column;
+            }
+        }
+        
+        /* Helper classes */
+        .hidden {
+            display: none;
+        }
+        
+        #protection-process, #claim-process, #referral-program, #faqs {
+            scroll-margin-top: 120px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon" id="moonIcon"></i>
+        <i class="fas fa-sun hidden" id="sunIcon"></i>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-shield-alt"></i>
+                JayVian
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#" class="active">How It Works</a>
+                <a href="#">Coverage</a>
+                <a href="#">Claims</a>
+                <a href="#">About Us</a>
+            </nav>
+            <div class="nav-buttons">
+                <a href="home.html" class="btn btn-primary">
+                    <i class="fas fa-user"></i> Client Login
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>How JayVian Phone Protection Works</h1>
+                <p>Simple, transparent, and reliable protection against phone theft in Kenya. Get covered in minutes and secure your device today.</p>
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-shield-alt"></i> Get Protected Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Navigation Summary -->
+    <section class="quick-nav">
+        <div class="container">
+            <div class="summary-cards">
+                <div class="summary-card" id="protection-summary">
+                    <div class="summary-header">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Protection Process</h3>
+                    </div>
+                    <ul class="summary-points">
+                        <li><i class="fas fa-check-circle"></i> 3-step signup process</li>
+                        <li><i class="fas fa-check-circle"></i> 700 KES/month premium</li>
+                        <li><i class="fas fa-check-circle"></i> 90-day waiting period</li>
+                        <li><i class="fas fa-check-circle"></i> One claim per year (up to 20K)</li>
+                    </ul>
+                    <a href="#protection-process" class="nav-link">See Details <i class="fas fa-arrow-down"></i></a>
+                </div>
+                
+                <div class="summary-card" id="claim-summary">
+                    <div class="summary-header">
+                        <i class="fas fa-file-claim"></i>
+                        <h3>Claim Process</h3>
+                    </div>
+                    <ul class="summary-points">
+                        <li><i class="fas fa-check-circle"></i> Report within 24 hours</li>
+                        <li><i class="fas fa-check-circle"></i> Police abstract required</li>
+                        <li><i class="fas fa-check-circle"></i> Up to 20K payout</li>
+                        <li><i class="fas fa-check-circle"></i> Paid directly to M-Pesa</li>
+                    </ul>
+                    <a href="#claim-process" class="nav-link">See Details <i class="fas fa-arrow-down"></i></a>
+                </div>
+                
+                <div class="summary-card" id="referral-summary">
+                    <div class="summary-header">
+                        <i class="fas fa-users"></i>
+                        <h3>Referral Program</h3>
+                    </div>
+                    <ul class="summary-points">
+                        <li><i class="fas fa-check-circle"></i> Level 1: 10% commission</li>
+                        <li><i class="fas fa-check-circle"></i> Level 2: 5% commission</li>
+                        <li><i class="fas fa-check-circle"></i> Level 3: 1% commission</li>
+                        <li><i class="fas fa-check-circle"></i> 1M KES earning cap</li>
+                    </ul>
+                    <a href="#referral-program" class="nav-link">See Details <i class="fas fa-arrow-down"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Protection Process -->
+    <section class="process" id="protection-process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get Protected in 3 Simple Steps</h2>
+                <p class="section-subtitle">Our straightforward process makes getting enterprise-grade protection quick and easy</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="step-title">Sign Up in Minutes</h3>
+                    <p class="step-description">Create your account with basic information. No lengthy forms or complicated paperwork.</p>
+                    <p><strong>Time:</strong> Less than 5 minutes</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3 class="step-title">Make Your First Payment</h3>
+                    <p class="step-description">Pay your first premium of 700 KES via M-Pesa. Protection starts immediately.</p>
+                    <p><strong>Coverage:</strong> Starts instantly</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="step-title">You're Protected!</h3>
+                    <p class="step-description">Your device is now covered. After 3 months of continuous payments, you're eligible for claims.</p>
+                    <p><strong>Eligibility:</strong> 90 days waiting period</p>
+                </div>
+            </div>
+            
+            <!-- Coverage Information -->
+            <div class="coverage-info">
+                <div class="coverage-header">
+                    <i class="fas fa-info-circle"></i>
+                    <h3>Important Coverage Details</h3>
+                </div>
+                <p>Your JayVian protection comes with specific terms designed to provide sustainable coverage for all our members:</p>
+                
+                <div class="coverage-details">
+                    <div class="coverage-item">
+                        <i class="fas fa-calendar-alt fa-2x"></i>
+                        <div class="coverage-value">90 Days</div>
+                        <div class="coverage-label">Waiting Period Before Claim Eligibility</div>
+                    </div>
+                    
+                    <div class="coverage-item">
+                        <i class="fas fa-money-bill-wave fa-2x"></i>
+                        <div class="coverage-value">20,000 KES</div>
+                        <div class="coverage-label">Maximum Annual Coverage</div>
+                    </div>
+                    
+                    <div class="coverage-item">
+                        <i class="fas fa-sync-alt fa-2x"></i>
+                        <div class="coverage-value">1 Claim</div>
+                        <div class="coverage-label">Per Year After Waiting Period</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Claim Process -->
+    <section class="claim-process" id="claim-process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Hassle-Free Claim Process</h2>
+                <p class="section-subtitle">When the unexpected happens, we make recovery simple and fast</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3 class="timeline-title">Report Theft Immediately</h3>
+                        <p class="timeline-description">Contact us within 24 hours of theft. Our support team is available 24/7 to guide you through the process.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3 class="timeline-title">Obtain Police Abstract</h3>
+                        <p class="timeline-description">Get an official police report from your local station. We'll provide guidance on what information to include.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="timeline-title">Provide Device Information</h3>
+                        <p class="timeline-description">Submit your device IMEI number and purchase details through our secure portal.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3 class="timeline-title">Claim Assessment</h3>
+                        <p class="timeline-description">Our team reviews your claim. 87% of claims are approved within 48 hours.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h3 class="timeline-title">Receive Your Payout</h3>
+                        <p class="timeline-description">Get up to 20,000 KES deposited directly to your M-Pesa account within 72 hours of approval.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Referral Program -->
+    <section class="process" id="referral-program">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Earn with Our 3-Level Referral Program</h2>
+                <p class="section-subtitle">Share the protection and earn money towards your own coverage</p>
+            </div>
+            
+            <div class="referral-visual">
+                <div class="referral-level">
+                    <h4>Level 1</h4>
+                    <div class="referral-percentage">10%</div>
+                    <p class="referral-description">Direct referrals</p>
+                    <p>Earn 10% of their monthly premium</p>
+                </div>
+                
+                <div class="referral-connector connector-1"></div>
+                
+                <div class="referral-level">
+                    <h4>Level 2</h4>
+                    <div class="referral-percentage">5%</div>
+                    <p class="referral-description">Referrals of referrals</p>
+                    <p>Earn 5% of their monthly premium</p>
+                </div>
+                
+                <div class="referral-connector connector-2"></div>
+                
+                <div class="referral-level">
+                    <h4>Level 3</h4>
+                    <div class="referral-percentage">1%</div>
+                    <p class="referral-description">Third-tier referrals</p>
+                    <p>Earn 1% of their monthly premium</p>
+                </div>
+            </div>
+            
+            <div class="referral-info">
+                <h3>Referral Program Details</h3>
+                <ul>
+                    <li><strong>Earning Cap:</strong> Maximum of 1,000,000 KES in referral earnings</li>
+                    <li><strong>Withdrawals:</strong> 20% commission applied to withdrawals (includes government tax requirements)</li>
+                    <li><strong>Payouts:</strong> Earnings credited to your JayVian account monthly</li>
+                    <li><strong>Usage:</strong> Use earnings to pay your premium or withdraw to M-Pesa</li>
+                </ul>
+                <p>Example: If you refer a friend who pays 700 KES/month, you earn 70 KES/month. If they refer someone, you earn 35 KES/month from that person, and so on.</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3 class="step-title">Share Your Unique Code</h3>
+                    <p class="step-description">Give friends your personal referral code or share your special link through social media, WhatsApp, or email.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3 class="step-title">Earn From Their Premiums</h3>
+                    <p class="step-description">When anyone signs up using your code, you earn commissions from three levels of referrals.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3 class="step-title">Cover Your Own Costs</h3>
+                    <p class="step-description">Use your earnings to pay for your own protection or withdraw to M-Pesa after commission.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faqs">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Everything you need to know about JayVian protection</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What devices do you cover?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We cover all smartphones valued up to 20,000 KES, regardless of brand or model. This includes Android and iOS devices purchased within the last 2 years.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How soon can I file a claim after signing up?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        You can file a claim after 90 days of continuous premium payments. This waiting period ensures the sustainability of our protection program. After this period, you're eligible for one claim per year.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What documents do I need to file a claim?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        You'll need: (1) Police abstract report, (2) Copy of your ID, (3) Proof of device ownership (receipt or box), and (4) Your device IMEI number.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How does the 3-level referral program work?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our referral program has three levels:</p>
+                        <ul>
+                            <li><strong>Level 1:</strong> Direct referrals - earn 10% of their monthly premium</li>
+                            <li><strong>Level 2:</strong> Referrals of your referrals - earn 5% of their monthly premium</li>
+                            <li><strong>Level 3:</strong> Referrals of Level 2 referrals - earn 1% of their monthly premium</li>
+                        </ul>
+                        <p>There's a maximum earning cap of 1,000,000 KES through the referral program.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What are the withdrawal terms for referral earnings?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>When you withdraw your referral earnings, a 20% commission is applied. This commission covers:</p>
+                        <ul>
+                            <li>Government taxes required by Kenyan law</li>
+                            <li>Transaction processing fees</li>
+                            <li>Program administration costs</li>
+                        </ul>
+                        <p>For example: If you withdraw 1,000 KES, you'll receive 800 KES after commission.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How many claims can I make per year?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        You can make one claim per year after the initial 90-day waiting period. The maximum payout per claim is 20,000 KES.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if I want to cancel my protection?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        You can cancel anytime with no penalties. We offer a 30-day money-back guarantee for new customers. After that, you can cancel and your protection will end at the end of your current billing cycle.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-container">
+                <h2>Ready to Protect Your Phone?</h2>
+                <p>Join thousands of Kenyans who sleep better knowing their devices are protected</p>
+                <a href="index.html" class="btn btn-primary" style="background: white; color: var(--primary);">
+                    <i class="fas fa-shield-alt"></i> Start Protection Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>JayVian</h3>
+                    <p style="color: #cbd5e1; margin-bottom: 20px; line-height: 1.6;">Providing enterprise-grade phone protection to Kenyans since 2020. Trusted by thousands to secure their valuable devices.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> How It Works</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Coverage Plans</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> File a Claim</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Westlands, Nairobi, Kenya</a></li>
+                        <li><a href="#"><i class="fas fa-phone-alt"></i> +254 700 123 456</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> support@jayvian.co.ke</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 8AM - 6PM</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 JayVian Microinsurance. All rights reserved. | Regulated by the Insurance Regulatory Authority of Kenya</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const moonIcon = document.getElementById('moonIcon');
+        const sunIcon = document.getElementById('sunIcon');
+        const body = document.body;
+
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            moonIcon.classList.add('hidden');
+            sunIcon.classList.remove('hidden');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                moonIcon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                moonIcon.classList.remove('hidden');
+                sunIcon.classList.add('hidden');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+        // FAQ toggle functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        // Animation for step cards
+        const stepCards = document.querySelectorAll('.step-card');
+        stepCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 300 + (index * 200));
+        });
+
+        // Animation for timeline items
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        timelineItems.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'all 0.6s ease';
+            
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, 300 + (index * 300));
+        });
+        
+        // Animation for summary cards
+        const summaryCards = document.querySelectorAll('.summary-card');
+        summaryCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 300 + (index * 200));
+        });
+        
+        // Animation for referral levels
+        const referralLevels = document.querySelectorAll('.referral-level');
+        referralLevels.forEach((level, index) => {
+            level.style.opacity = '0';
+            level.style.transform = 'translateY(30px)';
+            level.style.transition = 'all 0.6s ease';
+            
+            setTimeout(() => {
+                level.style.opacity = '1';
+                level.style.transform = 'translateY(0)';
+            }, 300 + (index * 300));
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
