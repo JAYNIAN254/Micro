@@ -1041,6 +1041,7 @@
         }
 
         .map-visual {
+            width: 100%; /* Added for proper map point positioning */
             height: 500px;
             background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
             border-radius: 20px;
@@ -1442,7 +1443,7 @@
             position: fixed;
             top: 30px;
             right: 30px;
-            z-index: 1000;
+            z-index: 1001; /* Increased z-index */
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -1623,31 +1624,31 @@
     </div>
 
     <!-- Live Support Widget -->
-    <div class="support-widget">
+    <div class="support-widget" id="supportWidget">
         <i class="fas fa-headset"></i>
     </div>
 
     <!-- Header -->
     <header>
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-shield-alt"></i>
-                JayVian
+    <div class="container nav-container">
+        <a href="index.html" class="logo">
+            <i class="fas fa-shield-alt"></i>
+            JayVian
+        </a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="howitworks.html" class="active">How It Works</a>
+            <a href="#">Coverage</a>
+            <a href="#">Claims</a>
+            <a href="#">About Us</a>
+        </nav>
+        <div class="nav-buttons">
+            <a href="home.html" class="btn btn-primary">
+                <i class="fas fa-user"></i> Client Login
             </a>
-            <nav class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="howitworks.html" class="active">How It Works</a>
-                <a href="#">Coverage</a>
-                <a href="#">Claims</a>
-                <a href="#">About Us</a>
-            </nav>
-            <div class="nav-buttons">
-                <a href="home.html" class="btn btn-primary">
-                    <i class="fas fa-user"></i> Client Login
-                </a>
-            </div>
         </div>
-    </header>
+    </div>
+</header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -2447,22 +2448,20 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 JayVian Microinsurance. All rights reserved. | Regulated by the Insurance Regulatory Authority of Kenya</p>
+                <p>© 2023 JayVian Microinsurance. All rights reserved. | Regulated by the Insurance Regulatory Authority of Kenya</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Dark mode toggle functionality - FIXED
+        // Dark mode toggle functionality
         const darkModeToggle = document.getElementById('darkModeToggle');
         const moonIcon = document.getElementById('moonIcon');
         const sunIcon = document.getElementById('sunIcon');
         const body = document.body;
 
-        // Initialize sun icon as hidden
         sunIcon.classList.add('hidden');
 
-        // Check for saved dark mode preference
         if (localStorage.getItem('darkMode') === 'enabled') {
             body.classList.add('dark-mode');
             moonIcon.classList.add('hidden');
@@ -2481,6 +2480,11 @@
                 sunIcon.classList.add('hidden');
                 localStorage.setItem('darkMode', 'disabled');
             }
+        });
+
+        // Live Support Widget Functionality
+        document.getElementById('supportWidget').addEventListener('click', () => {
+            alert('Live support chat would open here.');
         });
 
         // FAQ toggle functionality
@@ -2573,8 +2577,7 @@
         document.getElementById('level2').addEventListener('input', calculateEarnings);
         document.getElementById('level3').addEventListener('input', calculateEarnings);
         
-        // Initialize calculator
-        calculateEarnings();
+        calculateEarnings(); // Initialize calculator
 
         // Progress Tracker
         const progressBar = document.getElementById('progressBar');
@@ -2595,8 +2598,7 @@
             currentStep = (currentStep + 1) % 4;
         }
         
-        // Update progress every 3 seconds
-        setInterval(updateProgress, 3000);
+        setInterval(updateProgress, 3000); // Update progress every 3 seconds
 
         // Claim Simulator
         const simulatorSteps = document.querySelectorAll('.simulator-step');
@@ -2625,11 +2627,10 @@
             });
         });
         
-        // Auto-rotate testimonials
         setInterval(() => {
             currentSlide = (currentSlide + 1) % testimonialSlides.length;
             showSlide(currentSlide);
-        }, 5000);
+        }, 5000); // Auto-rotate testimonials every 5 seconds
     </script>
 </body>
 </html>
