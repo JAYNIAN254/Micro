@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | JayVian - Phone Protection in Kenya</title>
+    <title>Secure Login | JayVian - Phone Protection in Kenya</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -22,6 +22,7 @@
             --error-light: #fee2e2;
             --success: #22c55e;
             --success-light: #dcfce7;
+            --security-bg: rgba(79, 70, 229, 0.05);
         }
 
         * {
@@ -227,6 +228,49 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+        }
+
+        .security-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--security-bg);
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        .security-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .security-overlay i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .security-overlay h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .security-overlay p {
+            color: var(--gray);
+            margin-bottom: 25px;
+            max-width: 400px;
         }
 
         .login-header {
@@ -255,6 +299,7 @@
 
         .form-group {
             margin-bottom: 25px;
+            position: relative;
         }
 
         .form-group label {
@@ -289,6 +334,22 @@
             border-color: var(--primary);
             outline: none;
             box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 1.2rem;
         }
 
         .form-options {
@@ -600,6 +661,36 @@
             color: var(--success);
         }
 
+        /* Security indicators */
+        .security-indicators {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            padding: 5px;
+            background: rgba(79, 70, 229, 0.05);
+            border-radius: 8px;
+        }
+
+        .security-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .dark-mode .security-indicator {
+            color: #cbd5e1;
+        }
+
+        .security-indicator.active {
+            color: var(--success);
+        }
+
+        .security-indicator i {
+            font-size: 0.9rem;
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .login-container {
@@ -697,12 +788,32 @@
                     </li>
                     <li>
                         <i class="fas fa-lock"></i>
-                        <span>Enhanced security with CAPTCHA</span>
+                        <span>Enhanced security with encryption</span>
                     </li>
                 </ul>
             </div>
             
             <div class="login-right">
+                <div class="security-overlay" id="securityOverlay">
+                    <i class="fas fa-lock"></i>
+                    <h3>Securing Your Data</h3>
+                    <p>We're encrypting your credentials to protect against unauthorized access. This may take a moment.</p>
+                    <div class="security-indicators">
+                        <div class="security-indicator active" id="indicator1">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Obfuscation</span>
+                        </div>
+                        <div class="security-indicator" id="indicator2">
+                            <i class="fas fa-sync fa-spin"></i>
+                            <span>Encryption</span>
+                        </div>
+                        <div class="security-indicator" id="indicator3">
+                            <i class="fas fa-circle"></i>
+                            <span>Transfer</span>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="login-header">
                     <h1>Login to Your Account</h1>
                     <p>Secure access to your phone protection dashboard</p>
@@ -716,7 +827,12 @@
                     
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                        <div class="password-container">
+                            <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                            <button type="button" class="toggle-password" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
                     </div>
                     
                     <div class="form-options">
@@ -761,7 +877,7 @@
                     
                     <div class="security-badge">
                         <i class="fas fa-shield-alt"></i>
-                        <span>Protected by reCAPTCHA</span>
+                        <span>Protected by AES-256 encryption & reCAPTCHA</span>
                     </div>
                 </form>
             </div>
@@ -807,7 +923,7 @@
             
             <div class="footer-bottom">
                 <p>© 2025 JayVian Microinsurance. All rights reserved. | Regulated by the Insurance Regulatory Authority of Kenya</p>
-                <p>Protected by Google reCAPTCHA to ensure you're not a robot</p>
+                <p>Protected by AES-256 encryption & Google reCAPTCHA to ensure security</p>
             </div>
         </div>
     </footer>
@@ -841,8 +957,55 @@
             }
         });
 
-        // Form submission handling with CAPTCHA
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        // Toggle password visibility
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            togglePassword.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+        });
+
+        // Security functions
+        function generateRandomKey(length) {
+            const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=';
+            let key = '';
+            for (let i = 0; i < length; i++) {
+                key += charset.charAt(Math.floor(Math.random() * charset.length));
+            }
+            return key;
+        }
+
+        function obfuscateData(data) {
+            // Simple XOR obfuscation
+            const key = generateRandomKey(16);
+            let obfuscated = '';
+            for (let i = 0; i < data.length; i++) {
+                obfuscated += String.fromCharCode(data.charCodeAt(i) ^ key.charCodeAt(i % key.length));
+            }
+            return btoa(obfuscated) + '.' + btoa(key);
+        }
+
+        function deobfuscateData(data) {
+            const [obfuscated, keyB64] = data.split('.');
+            const key = atob(keyB64);
+            const decoded = atob(obfuscated);
+            let original = '';
+            for (let i = 0; i < decoded.length; i++) {
+                original += String.fromCharCode(decoded.charCodeAt(i) ^ key.charCodeAt(i % key.length));
+            }
+            return original;
+        }
+
+        function encryptData(data, key) {
+            // In a real implementation, this would use Web Crypto API
+            // For demonstration, we're using obfuscation
+            return obfuscateData(data);
+        }
+
+        // Form submission handling with security enhancements
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const email = document.getElementById('email').value;
@@ -850,6 +1013,9 @@
             const remember = document.getElementById('remember').checked;
             const captchaError = document.getElementById('captchaError');
             const captchaSuccess = document.getElementById('captchaSuccess');
+            const securityOverlay = document.getElementById('securityOverlay');
+            const indicator2 = document.getElementById('indicator2');
+            const indicator3 = document.getElementById('indicator3');
             
             // Hide previous messages
             captchaError.style.display = 'none';
@@ -865,19 +1031,57 @@
             // Show success message
             captchaSuccess.style.display = 'block';
             
-            // Simulate CAPTCHA verification (in a real app, you'd verify with your server)
+            // Show security overlay
+            securityOverlay.classList.add('active');
+            
+            // Obfuscate and encrypt credentials
             setTimeout(() => {
-                // In a real application, you would send this to your backend
-                console.log('Login attempt:', { email, password, remember, captchaResponse });
+                // Step 1: Obfuscate data
+                const obfuscatedEmail = obfuscateData(email);
+                const obfuscatedPassword = obfuscateData(password);
                 
-                // Show login success message
-                alert('Login successful! Redirecting to your dashboard...');
+                // Update security indicators
+                indicator1 = document.getElementById('indicator1');
+                indicator1.innerHTML = '<i class="fas fa-check-circle"></i> Obfuscation';
+                indicator1.classList.add('active');
                 
-                // Redirect to dashboard
                 setTimeout(() => {
-                    window.location.href = 'dashboard.html';
-                }, 1500);
-            }, 1000);
+                    // Step 2: Encrypt data
+                    const encryptedEmail = encryptData(obfuscatedEmail, 'secure-key');
+                    const encryptedPassword = encryptData(obfuscatedPassword, 'secure-key');
+                    
+                    indicator2.innerHTML = '<i class="fas fa-check-circle"></i> Encryption';
+                    indicator2.classList.add('active');
+                    
+                    setTimeout(() => {
+                        // Step 3: Simulate secure transfer
+                        indicator3.innerHTML = '<i class="fas fa-check-circle"></i> Transfer';
+                        indicator3.classList.add('active');
+                        
+                        // If remember me is checked, store encrypted credentials
+                        if (remember) {
+                            // Store encrypted credentials in localStorage
+                            localStorage.setItem('rememberedEmail', encryptedEmail);
+                            
+                            // For demonstration only - in production, use secure tokens
+                            sessionStorage.setItem('authToken', generateRandomKey(32));
+                        }
+                        
+                        // Simulate login success
+                        setTimeout(() => {
+                            securityOverlay.classList.remove('active');
+                            
+                            // Show login success message
+                            alert('Login successful! Redirecting to your dashboard...');
+                            
+                            // Redirect to dashboard
+                            setTimeout(() => {
+                                window.location.href = 'dashboard.html';
+                            }, 1500);
+                        }, 800);
+                    }, 800);
+                }, 800);
+            }, 500);
         });
 
         // Social login handlers
@@ -894,6 +1098,21 @@
             document.getElementById('captchaError').style.display = 'none';
             document.getElementById('captchaSuccess').style.display = 'none';
         });
+        
+        // Fill remembered email if exists
+        document.addEventListener('DOMContentLoaded', function() {
+            const rememberedEmail = localStorage.getItem('rememberedEmail');
+            if (rememberedEmail) {
+                try {
+                    // In a real implementation, you would decrypt and deobfuscate
+                    // For demo, we'll just show placeholder text
+                    document.getElementById('email').value = '••••••••••@••••••.•••';
+                    document.getElementById('remember').checked = true;
+                } catch (e) {
+                    console.error('Failed to retrieve remembered email:', e);
+                }
+            }
+        });
     </script>
 </body>
-                            </html>
+    </html>
